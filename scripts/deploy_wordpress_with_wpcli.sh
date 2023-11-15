@@ -67,3 +67,22 @@ wp core install \
   --admin_email=$WORDPRESS_ADMIN_EMAIL \
   --path=/var/www/html \
   --allow-root
+
+#Copiamos el archivo .htaccess
+
+cp ../htaccess/.htaccess /var/www/html/
+
+# Descargamos un plugin para la seguridad de WordPress
+
+sudo wp plugin install wp-staging --activate --path=/var/www/html --allow-root
+
+#Descargamos un tema cualquiera para la configuración
+
+sudo wp  theme install Hestia --activate list --path=/var/www/html --allow-root
+
+#Descargamos un pluggin cualquiera.
+
+sudo wp plugin install bbpress --activate --path=/var/www/html --allow-root
+#Modificamos los permisos de /var/www/html
+
+chown -R www-data:www-data /var/www/html
